@@ -59,9 +59,9 @@
     var SECTION_NAV_TOOLTIP_SEL='.'+SECTION_NAV_TOOLTIP;
     var SHOW_ACTIVE_TOOLTIP =   'fp-show-active';
 
-    // slide
-    var SLIDE_DEFAULT_SEL =     '.slide';
-    var SLIDE =                 'fp-slide';
+    // thirdparty
+    var SLIDE_DEFAULT_SEL =     '.thirdparty';
+    var SLIDE =                 'fp-thirdparty';
     var SLIDE_SEL =             '.' + SLIDE;
     var SLIDE_ACTIVE_SEL =      SLIDE_SEL + ACTIVE_SEL;
     var SLIDES_WRAPPER =        'fp-slides';
@@ -70,7 +70,7 @@
     var SLIDES_CONTAINER_SEL =  '.' + SLIDES_CONTAINER;
     var TABLE =                 'fp-table';
 
-    // slide nav
+    // thirdparty nav
     var SLIDES_NAV =            'fp-slidesNav';
     var SLIDES_NAV_SEL =        '.' + SLIDES_NAV;
     var SLIDES_NAV_LINK_SEL =   SLIDES_NAV_SEL + ' a';
@@ -403,7 +403,7 @@
         }
 
         /**
-         * Moves the page to the given section and slide with no animation.
+         * Moves the page to the given section and thirdparty with no animation.
          * Anchors or index positions can be used as params.
          */
         function silentMoveTo(sectionAnchor, slideAnchor){
@@ -413,7 +413,7 @@
         }
 
         /**
-         * Moves the page to the given section and slide.
+         * Moves the page to the given section and thirdparty.
          * Anchors or index positions can be used as params.
          */
         function moveTo(sectionAnchor, slideAnchor){
@@ -593,7 +593,7 @@
                 //Scrolls to the section when clicking the navigation bullet
                 .on('click touchstart', SECTION_NAV_SEL + ' a', sectionBulletHandler)
 
-                //Scrolls the slider to the given slide destination for the given section
+                //Scrolls the slider to the given thirdparty destination for the given section
                 .on('click touchstart', SLIDES_NAV_LINK_SEL, slideBulletHandler)
 
                 .on('click', SECTION_NAV_TOOLTIP_SEL, tooltipTextHandler);
@@ -666,7 +666,7 @@
                 styleSection(section, index);
                 styleMenu(section, index);
 
-                // if there's any slide
+                // if there's any thirdparty
                 if (numSlides > 0) {
                     styleSlides(section, slides, numSlides);
                 }else{
@@ -731,8 +731,8 @@
 
             var startingSlide = section.find(SLIDE_ACTIVE_SEL);
 
-            //if the slide won't be an starting point, the default will be the first one
-            //the active section isn't the first one? Is not the first slide of the first section? Then we load that section/slide by default.
+            //if the thirdparty won't be an starting point, the default will be the first one
+            //the active section isn't the first one? Is not the first thirdparty of the first section? Then we load that section/thirdparty by default.
             if( startingSlide.length &&  ($(SECTION_ACTIVE_SEL).index(SECTION_SEL) !== 0 || ($(SECTION_ACTIVE_SEL).index(SECTION_SEL) === 0 && startingSlide.index() !== 0))){
                 silentLandscapeScroll(startingSlide, 'internal');
             }else{
@@ -1318,7 +1318,7 @@
             var slides = activeSection.find(SLIDES_WRAPPER_SEL);
             var numSlides = slides.find(SLIDE_SEL).length;
 
-            // more than one slide needed and nothing should be sliding
+            // more than one thirdparty needed and nothing should be sliding
             if (!slides.length || slideMoving || numSlides < 2) {
                 return;
             }
@@ -1332,7 +1332,7 @@
                 destiny = currentSlide.next(SLIDE_SEL);
             }
 
-            //isn't there a next slide in the secuence?
+            //isn't there a next thirdparty in the secuence?
             if(!destiny.length){
                 //respect loopHorizontal settin
                 if (!options.loopHorizontal) return;
@@ -1398,7 +1398,7 @@
         }
 
         /**
-         * Scrolls the site to the given element and scrolls to the slide if a callback is given.
+         * Scrolls the site to the given element and scrolls to the thirdparty if a callback is given.
          */
         function scrollPage(element, callback, isMovementUp){
             if(typeof element === 'undefined'){ return; } //there's no element to scroll, leaving the function
@@ -1717,7 +1717,7 @@
         }
 
         /**
-         * Gets the active slide (or section) for the given section
+         * Gets the active thirdparty (or section) for the given section
          */
         function getSlideOrSection(destiny){
             var slide = destiny.find(SLIDE_ACTIVE_SEL);
@@ -1756,7 +1756,7 @@
                 var sectionAnchor = decodeURIComponent(value[0]);
                 var slideAnchor = decodeURIComponent(value[1]);
 
-                //when moving to a slide in the first section for the first time (first time to add an anchor to the URL)
+                //when moving to a thirdparty in the first section for the first time (first time to add an anchor to the URL)
                 var isFirstSlideMove =  (typeof lastScrolledDestiny === 'undefined');
                 var isFirstScrollMove = (typeof lastScrolledDestiny === 'undefined' && typeof slideAnchor === 'undefined' && !slideMoving);
 
@@ -1854,7 +1854,7 @@
             scrollPage($(SECTION_SEL).eq(index));
         }
 
-        //Scrolls the slider to the given slide destination for the given section
+        //Scrolls the slider to the given thirdparty destination for the given section
         function slideBulletHandler(e){
             e.preventDefault();
             var slides = $(this).closest(SECTION_SEL).find(SLIDES_WRAPPER_SEL);
@@ -2002,10 +2002,10 @@
             }
 
             if(!options.loopHorizontal && options.controlArrows){
-                //hidding it for the fist slide, showing for the rest
+                //hidding it for the fist thirdparty, showing for the rest
                 section.find(SLIDES_ARROW_PREV_SEL).toggle(v.slideIndex!==0);
 
-                //hidding it for the last slide, showing for the rest
+                //hidding it for the last thirdparty, showing for the rest
                 section.find(SLIDES_ARROW_NEXT_SEL).toggle(!destiny.is(':last-child'));
             }
 
@@ -2032,7 +2032,7 @@
                 playMedia(v.destiny);
             }
 
-            //letting them slide again
+            //letting them thirdparty again
             slideMoving = false;
         }
 
@@ -2146,7 +2146,7 @@
         }
 
         /**
-         * Activating the vertical navigation bullets according to the given slide name.
+         * Activating the vertical navigation bullets according to the given thirdparty name.
          */
         function activateNavDots(name, sectionIndex){
             if(options.navigation){
@@ -2160,7 +2160,7 @@
         }
 
         /**
-         * Activating the website main menu elements according to the given slide name.
+         * Activating the website main menu elements according to the given thirdparty name.
          */
         function activateMenuElement(name){
             if(options.menu){
@@ -2195,7 +2195,7 @@
 
         /**
          * Retuns `right` or `left` depending on the scrolling movement to reach its destination
-         * from the current slide.
+         * from the current thirdparty.
          */
         function getXmovement(fromIndex, toIndex){
             if( fromIndex == toIndex){
@@ -2211,7 +2211,7 @@
          * Checks if the element needs scrollbar and if the user wants to apply it.
          * If so it creates it.
          *
-         * @param {Object} element   jQuery object of the section or slide
+         * @param {Object} element   jQuery object of the section or thirdparty
          */
         function createScrollBar(element){
             //User doesn't want scrollbar here? Sayonara baby!
@@ -2222,7 +2222,7 @@
 
             var scrollOverflowHandler = options.scrollOverflowHandler;
             var wrap = scrollOverflowHandler.wrapContent();
-            //in case element is a slide
+            //in case element is a thirdparty
             var section = element.closest(SECTION_SEL);
             var scrollable = scrollOverflowHandler.scrollable(element);
             var contentHeight;
@@ -2320,7 +2320,7 @@
         }
 
         /**
-         * Gets a slide inside a given section by its anchor / index
+         * Gets a thirdparty inside a given section by its anchor / index
          */
         function getSlideByAnchor(slideAnchor, section){
             var slides = section.find(SLIDES_WRAPPER_SEL);
@@ -2334,7 +2334,7 @@
         }
 
         /**
-         * Scrolls to the given section and slide anchors
+         * Scrolls to the given section and thirdparty anchors
          */
         function scrollPageAndSlide(destiny, slide){
             var section = getSectionByAnchor(destiny);
@@ -2342,12 +2342,12 @@
             //do nothing if there's no section with the given anchor name
             if(!section.length) return;
 
-            //default slide
+            //default thirdparty
             if (typeof slide === 'undefined') {
                 slide = 0;
             }
 
-            //we need to scroll to the section and then to the slide
+            //we need to scroll to the section and then to the thirdparty
             if (destiny !== lastScrolledDestiny && !section.hasClass(ACTIVE)){
                 scrollPage(section, function(){
                     scrollSlider(section, slide);
@@ -2360,7 +2360,7 @@
         }
 
         /**
-         * Scrolls the slider to the given slide destination for the given section
+         * Scrolls the slider to the given thirdparty destination for the given section
          */
         function scrollSlider(section, slideAnchor){
             if(typeof slideAnchor !== 'undefined'){
@@ -2395,7 +2395,7 @@
 
 
         /**
-         * Sets the state of the website depending on the active section/slide.
+         * Sets the state of the website depending on the active section/thirdparty.
          * It changes the URL hash when needed and updates the body class.
          */
         function setState(slideIndex, slideAnchor, anchorLink, sectionIndex){
@@ -2403,13 +2403,13 @@
 
             if(options.anchors.length && !options.lockAnchors){
 
-                //isn't it the first slide?
+                //isn't it the first thirdparty?
                 if(slideIndex){
                     if(typeof anchorLink !== 'undefined'){
                         sectionHash = anchorLink;
                     }
 
-                    //slide without anchor link? We take the index instead.
+                    //thirdparty without anchor link? We take the index instead.
                     if(typeof slideAnchor === 'undefined'){
                         slideAnchor = slideIndex;
                     }
@@ -2417,7 +2417,7 @@
                     lastScrolledSlide = slideAnchor;
                     setUrlHash(sectionHash + '/' + slideAnchor);
 
-                    //first slide won't have slide anchor, just the section one
+                    //first thirdparty won't have thirdparty anchor, just the section one
                 }else if(typeof slideIndex !== 'undefined'){
                     lastScrolledSlide = slideAnchor;
                     setUrlHash(anchorLink);
@@ -2450,7 +2450,7 @@
         }
 
         /**
-         * Gets the anchor for the given slide / section. Its index will be used if there's none.
+         * Gets the anchor for the given thirdparty / section. Its index will be used if there's none.
          */
         function getAnchor(element){
             var anchor = element.data('anchor');
@@ -2465,7 +2465,7 @@
         }
 
         /**
-         * Sets a class for the body of the page depending on the active section / slide
+         * Sets a class for the body of the page depending on the active section / thirdparty
          */
         function setBodyClass(){
             var section = $(SECTION_ACTIVE_SEL);
@@ -2652,7 +2652,7 @@
         }
 
         /**
-         * Slides silently (with no animation) the active slider to the given slide.
+         * Slides silently (with no animation) the active slider to the given thirdparty.
          * @param noCallback {bool} true or defined -> no callbacks
          */
         function silentLandscapeScroll(activeSlide, noCallbacks){
@@ -2977,7 +2977,7 @@
         /**
          * Turns off iScroll for the destination section.
          * When scrolling very fast on some trackpads (and Apple laptops) the inertial scrolling would
-         * scroll the destination section/slide before the sections animations ends.
+         * scroll the destination section/thirdparty before the sections animations ends.
          */
         onLeave: function(){
             iscrollHandler.toggleWheel(false);
@@ -3048,7 +3048,7 @@
         /**
          * Returns the scrollable element for the given section.
          * If there are landscape slides, will only return a scrollable element
-         * if it is in the active slide.
+         * if it is in the active thirdparty.
          *
          * @param  {Object}  activeSection jQuery object containing current section
          * @return {Boolean}

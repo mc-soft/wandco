@@ -5,12 +5,12 @@
     <title>Wildish&Co</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="slide/jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="thirdparty/jquery.fullPage.css" />
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="slide/scrolloverflow.js"></script>
-    <script type="text/javascript" src="slide/jquery.fullPage.js"></script>
+    <script type="text/javascript" src="thirdparty/scrolloverflow.js"></script>
+    <script type="text/javascript" src="thirdparty/jquery.fullPage.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
