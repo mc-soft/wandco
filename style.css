@@ -1,0 +1,90 @@
+* {padding: 0; margin: 0}
+
+@font-face { font-family: Brandon_reg; src: url('fonts/Brandon_reg.otf'); }
+@font-face { font-family: Socialco; src: url('fonts/Socialico.otf'); }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    font-family: Brandon_reg, sans-serif;
+    font-weight: lighter;
+    font-size: 300%;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-family: Brandon_reg, sans-serif;
+    font-weight: lighter;
+}
+
+p {
+    font-family: Brandon_reg, sans-serif;
+    font-size: larger;
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+
+.button {
+    background: #16192C;
+    width: 35%;
+    height: 10%;
+    position: relative;
+    left: 50%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    margin-left: -17.5%;
+}
+
+.center {
+    text-align: center;
+}
+
+.container {
+    width:100%;
+    height:100vh;
+}
+
+.grid {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.col {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.col {
+    background-size: cover;
+    background-position: center;
+}
+
+.v_align {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.v_table,
+.v_cell {
+    width: 100%;
+    height: 100%;
+}
+
+.v_table {
+    display: table;
+}
+
+.v_cell {
+    display: table-cell;
+    vertical-align: middle;
+}
